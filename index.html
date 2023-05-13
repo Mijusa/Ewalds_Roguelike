@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
         <title>Rouguelike</title>
         <style>
+            canvas{
+                outline: 1px solid white;
+            }
+
             body {
-                background: rgb(53, 0, 139);
+                background: indigo;
+                text-align: center;
+                margin-top: 50px;
             }
         </style>
-        <canvas></canvas>
-        <script>
-            canvas = document.querySelector("canvas");
-            ctx = canvas.getContext("2d");
 
-            ctx.fillRect(0,0,20,20,20);
+        <canvas></canvas>
+
+        <script src="js/game.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/monster.js"></script>
+        <script src="js/spell.js"></script>
+        <script src="js/tile.js"></script>
+        <script src="js/util.js"></script>
+
+        <script>
+            tileSize = 64;
+            numTiles = 9;
+            uiWidth = 4;
 
             x = y = 0;
 
@@ -25,10 +38,13 @@
             };
 
             function draw() {
-                ctx.fillRect (x*20, y*20, 20, 20)
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.fillRect (x*tileSize,y*tileSize,tileSize,tileSize);
             }
 
             setInterval(draw, 15);
+
+            setupCanvas();
         </script>
     </head>
     <body>
