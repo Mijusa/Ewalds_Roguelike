@@ -1,0 +1,19 @@
+function Game_Init()
+            {
+                window.addEventListener('keydown', function(event) {
+                    var key_pressed = String.fromCharCode(event.keyCode);
+                    console.log(key_pressed);
+                });
+
+                console.log("ehm...")
+            }
+
+            function Game_Main()
+            {
+                Game_Init();
+                console.log("Im the CONSOLE GOD");
+            }
+
+            window.addEventListener('load', function(event) {
+                Game_Main();
+            })
