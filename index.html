@@ -8,7 +8,7 @@
             }
 
             body {
-                background: indigo;
+                background: rgb(70, 68, 75);
                 text-align: center;
                 margin-top: 50px;
             }
@@ -29,7 +29,7 @@
             uiWidth = 4;
 
             spritesheet = new Image();
-            spritesheet.src = "first_char.png"
+            spritesheet.src = "images/first_char.png"
 
             x = y = 0;
 
@@ -43,9 +43,15 @@
             setInterval(draw, 15);
 
             setupCanvas();
+
+            generateLevel();
+
+            startingTile = randomPassableTile();
+            x = startingTile.x;
+            y = startingTile.y;
         </script>
     </head>
     <body>
-
+        
     </body>
 </html>
