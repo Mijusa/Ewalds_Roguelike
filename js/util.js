@@ -1,4 +1,4 @@
-function tryDo(description, callback) {
+function tryTo(description, callback) {
     for(let timeout = 1000; timeout > 0; timeout--) {
         if(callback()) {
             return;
@@ -7,6 +7,6 @@ function tryDo(description, callback) {
     throw 'Timeout while trying to ' + description;
 }
 
-function radnomRange(min, max) {
-    return Math.floor(Math.random() * (min-max+1)) + min;
+function randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
