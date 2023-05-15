@@ -6,6 +6,19 @@ class Tile {
         this.passable = passable;
     }
 
+    getNeighbor(dx, dy) {
+        return getTile(this.x + dx, this.y + dy)
+    }
+
+    getAdjacentNeighbors() {
+        return shuffle([
+            this.getNeighbor(0, -1),
+            this.getNeighbor(0, 1),
+            this.getNeighbor(-1, 0),
+            this.getNeighbor(1, 0)
+        ]);
+    }
+
     draw(){
         drawSprite(this.sprite, this.x, this.y);
     }
