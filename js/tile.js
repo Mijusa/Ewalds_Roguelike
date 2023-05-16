@@ -19,6 +19,23 @@ class Tile {
         ]);
     }
 
+    getAdjacentPassableNeighbors(){
+        return this.getAdjacentNeighbors().filter(t => t.passable);
+    }
+
+    getConnectedTiles(){
+        let connectedTiles = [this];
+        let frontier = [this];
+        while(frontier.length){
+            let neighbors = frontier.pop()
+                                .getAdjacentPassableNeighbors()
+                                .filter(t => !connectedTiles.includes(t));
+            connectedTiles = connectedTiles.concat(neighbors);
+            frontier = frontier.concat(neighbors);
+        }
+        return connectedTiles;
+    }
+
     draw(){
         drawSprite(this.sprite, this.x, this.y);
     }
