@@ -1,3 +1,4 @@
+//
 function setupCanvas() {
     canvas = document.querySelector("canvas");
     ctx = canvas.getContext("2d");
@@ -10,6 +11,7 @@ function setupCanvas() {
     ctx.imageSmoothingEnabled = false;
 }
 
+//
 function drawSprite(sprite, x, y) {
     ctx.drawImage(
         spritesheet,
@@ -24,6 +26,7 @@ function drawSprite(sprite, x, y) {
     );
 }
 
+//
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -33,5 +36,5 @@ function draw() {
         }
     }
 
-    drawSprite(0, x, y);
+    player.draw();
 }
