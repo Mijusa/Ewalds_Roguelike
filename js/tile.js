@@ -8,7 +8,7 @@ class Tile {
     }
 
     //Manhatten Distance Funktion
-    dist(other) {
+    dist(other){
         return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
     }
 
@@ -33,7 +33,7 @@ class Tile {
     }
 
     //Gibt ein Array mit allen Tiles zurück, die mit diesem Tile verbunden sind
-    getConnectedTiles(){
+    getConnectedTiles() {
         let connectedTiles = [this];
         let frontier = [this];
         while(frontier.length){
