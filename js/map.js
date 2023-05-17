@@ -1,9 +1,13 @@
+//Function die die Map generiert
 function generateLevel(){
     tryTo('generate map', function() {
         return generateTiles() == randomPassableTile().getConnectedTiles().length;
     });
+
+    generateMonsters();
 }
 
+//Function die die Tiles generiert/Map generiert
 function generateTiles() {
     let passableTiles = 0;
 
@@ -24,10 +28,12 @@ function generateTiles() {
     return passableTiles;
 }
 
+//Function die prüft ob ein Tile in den Grenzen liegt
 function inBounds(x,y){
     return x > 0 && y > 0 && x < numTiles-1 && y < numTiles-1;
 }
 
+//Function die einen Tile zurückgibt
 function getTile(x,y) {
     if(inBounds(x,y)) {
         return tiles[x][y];
@@ -36,6 +42,7 @@ function getTile(x,y) {
     }
 }
 
+//Function die einen zufälligen passierbaren Tile zurückgibt
 function randomPassableTile() {
     let tile;
     tryTo('get random passable tile', function() {
@@ -46,4 +53,20 @@ function randomPassableTile() {
         return tile.passable && !tile.monster;
     });
     return tile;
+}
+
+//Function die Monster generiert
+function generateMonsters() {
+    monsters = [];
+    let numMonsters = level + 1;
+    for(let i = 0; i < numMonsters; i++) {
+        spawnMonster();
+    } 
+}
+
+//Function die Monster spwanen lässt
+function spawnMonster() {
+    let monsterType = shuffle([turtle, chicken, snail])[0];
+    let monster = new  monsterType(randomPassableTile());
+    monsters.push(monster);
 }

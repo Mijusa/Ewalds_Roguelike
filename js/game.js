@@ -1,4 +1,4 @@
-//
+//Function die den Canvas initialisiert
 function setupCanvas() {
     canvas = document.querySelector("canvas");
     ctx = canvas.getContext("2d");
@@ -11,7 +11,7 @@ function setupCanvas() {
     ctx.imageSmoothingEnabled = false;
 }
 
-//
+//Function die die Sprites initialisiert/zeichnet
 function drawSprite(sprite, x, y) {
     ctx.drawImage(
         spritesheet,
@@ -26,7 +26,7 @@ function drawSprite(sprite, x, y) {
     );
 }
 
-//
+//Function die den Canvas cleart und neu zeichnet
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -36,5 +36,20 @@ function draw() {
         }
     }
 
+    for(let i = 0; i < monsters.length; i++) {
+        monsters[i].draw();
+    }
+
     player.draw();
+}
+
+//Function die ticks zählt
+function tick() {
+    for(let k = monsters.length - 1; k >= 0; k--) {
+        if(!monsters[k].dead) {
+            monsters[k].update();
+        } else {
+            monsters.splice(k, 1);
+        }
+    }
 }

@@ -24,13 +24,19 @@
         <script src="js/util.js"></script>
 
         <script>
+            //Variablen für den Canvas
             tileSize = 64;
-            numTiles = 23;
+            numTiles = 9;
             uiWidth = 4;
 
-            spritesheet = new Image();
-            spritesheet.src = "images/first_char.png"
+            //Level Variable
+            level = 1;
 
+            //Laden des Spritesheets
+            spritesheet = new Image();
+            spritesheet.src = "images/sprites.png"
+
+            //Movement
             document.querySelector("html").onkeypress = function(e){
                 if(e.key=="w") player.tryMove(0, -1);
                 if(e.key=="s") player.tryMove(0, 1);
