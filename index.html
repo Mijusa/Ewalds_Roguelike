@@ -28,6 +28,7 @@
             tileSize = 64;
             numTiles = 9;
             uiWidth = 4;
+            maxHP = 6;
 
             //Level Variable
             level = 1;
@@ -36,21 +37,40 @@
             spritesheet = new Image();
             spritesheet.src = "images/sprites.png"
 
+            spritesheet.onload = showTitle;
+
+            gameState = "loading";
+
+            startingHp = 3;
+            numLevels = 6;
+
             //Movement
             document.querySelector("html").onkeypress = function(e){
-                if(e.key=="w") player.tryMove(0, -1);
-                if(e.key=="s") player.tryMove(0, 1);
-                if(e.key=="a") player.tryMove(-1, 0);
-                if(e.key=="d") player.tryMove(1, 0);
+
+                if(gameState == "title") {
+                    startGame();
+                }else if(gameState == "dead") {
+                    showTitle();
+                }else if(gameState == "running") {
+                    if(e.key=="w") player.tryMove(0, -1);
+                    if(e.key=="s") player.tryMove(0, 1);
+                    if(e.key=="a") player.tryMove(-1, 0);
+                    if(e.key=="d") player.tryMove(1, 0);
+                }
             };
 
-            setInterval(draw, 15);
+            //requestAnimationFrame
+            function animate() {
+                draw();
+                requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+            
+            //Alternative zu requestAnimationFrame
+            //setInterval(draw, 15);
 
             setupCanvas();
-
-            generateLevel();
-
-            player = new Player(randomPassableTile());
         </script>
     </head>
     <body>
