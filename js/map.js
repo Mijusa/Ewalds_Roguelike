@@ -48,7 +48,6 @@ function randomPassableTile() {
     tryTo('get random passable tile', function() {
         let x = randomRange(0, numTiles - 1);
         let y = randomRange(0, numTiles - 1);
-        console.log(x, " ", y);
         tile = getTile(x, y);
         return tile.passable && !tile.monster;
     });

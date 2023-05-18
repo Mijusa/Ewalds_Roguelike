@@ -7,6 +7,11 @@ class Tile {
         this.passable = passable;
     }
 
+    replace(newTileType){
+        tiles[this.x][this.y] = new newTileType(this.x, this.y);
+        return tiles[this.x][this.y];
+    }
+
     //Manhatten Distance Funktion
     dist(other){
         return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
@@ -56,10 +61,31 @@ class Floor extends Tile {
     constructor(x, y) {
         super(x, y, 2 , true);
     }
+
+    stepOn(monster) {
+        //TODO
+    }
 }
 
 class Wall extends Tile {
     constructor(x, y) {
         super(x, y, 3, false);
+    }
+}
+
+class Exit extends Tile {
+    constructor(x, y) {
+        super(x, y, 9, true);
+    }
+
+    stepOn(monster) {
+        if(monster.isPlayer) {
+            if(level == numLevels) {
+                showTitle();
+            }else {
+                level++;
+                startLevel(Math.min(maxHp, player.hp + 1));
+            }
+        }
     }
 }
