@@ -7,7 +7,6 @@ function setupCanvas() {
     canvas.height = tileSize * numTiles;
     canvas.style.width = canvas.width + "px";
     canvas.style.height = canvas.height + "px";    
-
     ctx.imageSmoothingEnabled = false;
 }
 
@@ -15,12 +14,12 @@ function setupCanvas() {
 function drawSprite(sprite, x, y) {
     ctx.drawImage(
         spritesheet,
-        sprite*16,
+        sprite * 16,
         0,
         16,
         16,
-        x*tileSize,
-        y*tileSize,
+        x * tileSize + shakeX,
+        y * tileSize + shakeY,
         tileSize,
         tileSize
     );
@@ -29,8 +28,9 @@ function drawSprite(sprite, x, y) {
 //Function die den Canvas cleart und neu zeichnet
 function draw() {
     if(gameState == "running" || gameState == "dead") {
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        screenshake();
 
         for(let i = 0; i < numTiles; i++) {
             for(let j = 0; j < numTiles; j++) {
@@ -45,7 +45,6 @@ function draw() {
         player.draw();
 
         drawText("Level: " + level, 30, false, 40, "violet");
-
         drawText("Score: " + score, 30, false, 70, "violet");
     }
 }
@@ -55,14 +54,13 @@ function tick() {
     for(let k = monsters.length - 1; k >= 0; k--) {
         if(!monsters[k].dead) {
             monsters[k].update();
-        } else {
+        }else {
             monsters.splice(k, 1);
         }
     }
 
     if(player.dead) {
         addScore(score, false);
-
         gameState = "dead";
     }
 
@@ -89,7 +87,6 @@ function showTitle() {
 function startGame() {
     level = 1;
     score = 0;
-
     startLevel(startingHp);
 
     gameState = "running";
@@ -174,4 +171,13 @@ function drawScores() {
             );
         }
     }
+}
+
+function screenshake() {
+    if(shakeAmount) {
+        shakeAmount--;
+    }
+    let shakeAngle = Math.random() * Math.PI * 2;
+    shakeX = Math.round(Math.cos(shakeAngle) * shakeAmount);
+    shakeY = Math.round(Math.sin(shakeAngle) * shakeAmount);
 }
