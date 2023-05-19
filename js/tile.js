@@ -54,6 +54,10 @@ class Tile {
     //Zeichnet das Tile
     draw(){
         drawSprite(this.sprite, this.x, this.y);
+
+        if(this.treasure){
+            drawSprite(10, this.x, this.y);
+        }
     }
 }
 
@@ -63,7 +67,11 @@ class Floor extends Tile {
     }
 
     stepOn(monster) {
-        //TODO
+        if(monster.isPlayer && this.treasure) {
+            this.treasure = false;
+            score++;
+            spawnMonster();
+        }
     }
 }
 
@@ -81,6 +89,8 @@ class Exit extends Tile {
     stepOn(monster) {
         if(monster.isPlayer) {
             if(level == numLevels) {
+                addScore(score, true);
+                    
                 showTitle();
             }else {
                 level++;
