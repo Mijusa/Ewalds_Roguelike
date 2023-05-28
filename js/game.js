@@ -9,7 +9,7 @@ function setupCanvas() {
 
     if(canvas.width > window.screen.width || canvas.height > window.screen.height) {
         console.log("Canvas too big, reducing tile size");
-        numTiles -= 2;
+        numTiles--;
         canvas.width = tileSize * (numTiles + uiWidth);
         canvas.height = tileSize * numTiles;
         console.log("Canvas size: " + canvas.width + "x" + canvas.height);
@@ -82,7 +82,9 @@ function tick() {
     }
 }
 
+//Function die den Title zeigt
 function showTitle() {
+    //Resets the game size
     numTiles = 9;
     setupCanvas();
 
@@ -97,6 +99,7 @@ function showTitle() {
     drawScores();
 }
 
+//Function die das game Startet und den gamestate auf running setzt
 function startGame() {
     level = 1;
     score = 0;
@@ -105,6 +108,7 @@ function startGame() {
     gameState = "running";
 }
 
+//Function die das Level generiert
 function startLevel(playerHp) {
     spawnRate = 15;
     spawnCounter = spawnRate;
@@ -117,6 +121,7 @@ function startLevel(playerHp) {
     randomPassableTile().replace(Exit);
 }
 
+//
 function drawText(text, size, centered, textY, color) {
     ctx.fillStyle = color;
     ctx.font = size + "px monospace";
@@ -130,6 +135,7 @@ function drawText(text, size, centered, textY, color) {
     ctx.fillText(text, textX, textY);
 }
 
+//Function die Scores abruft
 function getScore() {
     if(localStorage["scores"]) {
         return JSON.parse(localStorage["scores"]);
@@ -138,6 +144,7 @@ function getScore() {
     }
 }
 
+//Function die Scores hinzufügt
 function addScore(score, won) {
     let scores = getScore();
     let scoresObj = {score: score, run: 1, totalScore: score, active: won};
@@ -156,6 +163,7 @@ function addScore(score, won) {
     localStorage["scores"] = JSON.stringify(scores);
 }
 
+//Function die die Scores anzeigt
 function drawScores() {
     let scores = getScore();
     if(scores.length) {
@@ -186,6 +194,7 @@ function drawScores() {
     }
 }
 
+//Function die den Screenshake macht
 function screenshake() {
     if(shakeAmount) {
         shakeAmount--;

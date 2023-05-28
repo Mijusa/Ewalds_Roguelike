@@ -13,6 +13,7 @@ class Tile {
     }
 
     //Manhatten Distance Funktion
+    //Damit die Monster wissen, wie weit sie vom Spieler entfernt sind
     dist(other){
         return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
     }
@@ -23,6 +24,7 @@ class Tile {
     }
 
     //Gibt ein Array mit allen Nachbarn zurück
+    //Die Reihenfolge ist zufällig
     getAdjacentNeighbors() {
         return shuffle([
             this.getNeighbor(0, -1),
@@ -48,6 +50,7 @@ class Tile {
             connectedTiles = connectedTiles.concat(neighbors);
             frontier = frontier.concat(neighbors);
         }
+        
         return connectedTiles;
     }
 
@@ -94,9 +97,13 @@ class Exit extends Tile {
                 showTitle();
             }else {
                 level++;
-                numTiles += 2;
+
+                //Nach einem Levelanstieg wird das Spielfeld vergrößert
+                numTiles++;
+                
                 setupCanvas();
                 startLevel(Math.min(maxHp, player.hp + 1));
+                teleportCounter = 3;
             }
         }
     }
