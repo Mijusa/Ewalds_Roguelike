@@ -5,6 +5,16 @@ function setupCanvas() {
 
     canvas.width = tileSize * (numTiles + uiWidth);
     canvas.height = tileSize * numTiles;
+    console.log("Canvas size: " + canvas.width + "x" + canvas.height);
+
+    if(canvas.width > window.screen.width || canvas.height > window.screen.height) {
+        console.log("Canvas too big, reducing tile size");
+        numTiles -= 2;
+        canvas.width = tileSize * (numTiles + uiWidth);
+        canvas.height = tileSize * numTiles;
+        console.log("Canvas size: " + canvas.width + "x" + canvas.height);
+    }
+
     canvas.style.width = canvas.width + "px";
     canvas.style.height = canvas.height + "px";    
     ctx.imageSmoothingEnabled = false;
@@ -73,6 +83,9 @@ function tick() {
 }
 
 function showTitle() {
+    numTiles = 9;
+    setupCanvas();
+
     ctx.fillSytle = 'rgba(0, 0, 0, 0.75)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -148,10 +161,10 @@ function drawScores() {
     if(scores.length) {
         drawText(
             rightPad(["RUN", "SCORES", "TOTAL"]),
-        18,
-        true,
-        canvas.height / 2,
-        "white"
+            18,
+            true,
+            canvas.height / 2,
+            "white"
         );
 
         let newestScore = scores.pop();

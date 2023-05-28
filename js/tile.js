@@ -94,6 +94,8 @@ class Exit extends Tile {
                 showTitle();
             }else {
                 level++;
+                numTiles += 2;
+                setupCanvas();
                 startLevel(Math.min(maxHp, player.hp + 1));
             }
         }
