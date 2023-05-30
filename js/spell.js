@@ -2,5 +2,7 @@
 //TODO 
 
 spells = {
-    //TODO
+    WOOP : function() {
+        player.move(randomPassableTile())
+    },
 }

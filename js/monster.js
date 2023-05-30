@@ -122,11 +122,26 @@ class Player extends Monster {
         super(tile, 0, 3);
         this.isPlayer = true;
         this.teleportCounter = 0;
+        this.spells = shuffle(Object.keys(spells)).splice(0, numSpells);
     }
 
     //Methode die die Bewegung des Spielers prüft/möglich macht
     tryMove(dx, dy) {
         if(super.tryMove(dx, dy)) {
+            tick();
+        }
+    }
+
+    addSpell() {
+        let newSpell = shuffle(Object.keys(spells))[0];
+        this.spells.push(newSpell);
+    }
+
+    castSpell(index) {
+        let spell = this.spells[index];
+        if(spell) {
+            delete this.spells[index];
+            spells[spell]();
             tick();
         }
     }

@@ -203,3 +203,7 @@ function screenshake() {
     shakeX = Math.round(Math.cos(shakeAngle) * shakeAmount);
     shakeY = Math.round(Math.sin(shakeAngle) * shakeAmount);
 }
+
+function increaseLevel() {
+    
+}

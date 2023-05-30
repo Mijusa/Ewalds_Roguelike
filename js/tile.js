@@ -103,7 +103,8 @@ class Exit extends Tile {
                 
                 setupCanvas();
                 startLevel(Math.min(maxHp, player.hp + 1));
-                teleportCounter = 3;
+                
+                monster.teleportCounter = 3;
             }
         }
     }
