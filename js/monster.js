@@ -99,7 +99,7 @@ class Monster{
         this.tile.monster = null;
         this.sprite = 1;
 
-        score += 10;
+        score++;
     }
 
     move(tile){
