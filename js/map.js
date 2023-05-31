@@ -7,7 +7,13 @@ function generateLevel(){
     generateMonsters();
 
     for(let i = 0; i < 3; i++) {
-        randomPassableTile().treasure = true;
+        tile = randomPassableTile();
+
+        while(tile.monster || tile == Player.tile) {
+            tile = randomPassableTile();
+        }
+
+        tile.treasure = true;
     }
 }
 
