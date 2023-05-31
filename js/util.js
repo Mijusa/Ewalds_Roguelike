@@ -34,3 +34,11 @@ function rightPad(arr) {
     
     return finalText;
 }
+
+function windowHeight() {
+    return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+}
+
+function windowWidth() {
+    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+}

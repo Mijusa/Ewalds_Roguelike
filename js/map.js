@@ -16,9 +16,9 @@ function generateTiles() {
     let passableTiles = 0;
 
     tiles = [];
-    for(let i = 0; i < numTiles; i++) {
+    for(let i = 0; i < numTilesWidth; i++) {
         tiles[i] = [];
-        for(let j = 0; j < numTiles; j++) {
+        for(let j = 0; j < numTilesHeight; j++) {
             if(Math.random() < 0.3 || !inBounds(i, j)) {
                 tiles[i][j] = new Wall(i,j);
             }else {
@@ -34,7 +34,7 @@ function generateTiles() {
 
 //Function die prüft ob ein Tile in den Grenzen liegt
 function inBounds(x,y){
-    return x > 0 && y > 0 && x < numTiles-1 && y < numTiles-1;
+    return x > 0 && y > 0 && x < numTilesWidth-1 && y < numTilesHeight-1;
 }
 
 //Function die einen Tile zurückgibt
@@ -50,8 +50,8 @@ function getTile(x,y) {
 function randomPassableTile() {
     let tile;
     tryTo('get random passable tile', function() {
-        let x = randomRange(0, numTiles - 1);
-        let y = randomRange(0, numTiles - 1);
+        let x = randomRange(0, numTilesWidth - 1);
+        let y = randomRange(0, numTilesHeight - 1);
         tile = getTile(x, y);
         return tile.passable && !tile.monster;
     });

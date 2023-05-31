@@ -26,13 +26,13 @@
         <script>
             //Variablen für den Canvas
             tileSize = 64;
-            numTiles = 7;
+            numTilesWidth = 7;
+            numTilesHeight = 7;
             uiWidth = 4;
             maxHp = 6;
 
             //Level Variable
             level = 1;
-            numSpells = 1;
 
             //Laden des Spritesheets
             spritesheet = new Image();
@@ -50,18 +50,24 @@
             shakeY = 0;
 
             //Movement
-            document.querySelector("html").onkeypress = function(e){
+            document.querySelector("html").onkeydown = function(e){
 
                 if(gameState == "title") {
                     startGame();
                 }else if(gameState == "dead") {
                     showTitle();
                 }else if(gameState == "running") {
+                    //Movement
                     if(e.key=="w") player.tryMove(0, -1);
                     if(e.key=="s") player.tryMove(0, 1);
                     if(e.key=="a") player.tryMove(-1, 0);
                     if(e.key=="d") player.tryMove(1, 0);
+                    if(e.key=="ArrowUp") player.tryMove(0, -1);
+                    if(e.key=="ArrowDown") player.tryMove(0, 1);
+                    if(e.key=="ArrowLeft") player.tryMove(-1, 0);
+                    if(e.key=="ArrowRight") player.tryMove(1, 0);
 
+                    //Spells
                     if(e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1);
                 }
             };

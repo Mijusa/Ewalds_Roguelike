@@ -3,16 +3,16 @@ function setupCanvas() {
     canvas = document.querySelector("canvas");
     ctx = canvas.getContext("2d");
 
-    canvas.width = tileSize * (numTiles + uiWidth);
-    canvas.height = tileSize * numTiles;
-    console.log("Canvas size: " + canvas.width + "x" + canvas.height);
+    canvas.width = tileSize * (numTilesWidth + uiWidth);
+    canvas.height = tileSize * numTilesHeight;
 
-    if(canvas.width > window.screen.width || canvas.height > window.screen.height) {
-        console.log("Canvas too big, reducing tile size");
-        numTiles--;
-        canvas.width = tileSize * (numTiles + uiWidth);
-        canvas.height = tileSize * numTiles;
-        console.log("Canvas size: " + canvas.width + "x" + canvas.height);
+    if(canvas.width > windowWidth()) {
+        numTilesWidth--;
+        canvas.width = tileSize * (numTilesWidth + uiWidth);
+    }
+    if(canvas.height > windowHeight() - 10) {
+        numTilesHeight--;
+        canvas.height = tileSize * numTilesHeight;
     }
 
     canvas.style.width = canvas.width + "px";
@@ -42,8 +42,8 @@ function draw() {
 
         screenshake();
 
-        for(let i = 0; i < numTiles; i++) {
-            for(let j = 0; j < numTiles; j++) {
+        for(let i = 0; i < numTilesWidth; i++) {
+            for(let j = 0; j < numTilesHeight; j++) {
                 getTile(i, j).draw();
             }
         }
@@ -56,6 +56,11 @@ function draw() {
 
         drawText("Level: " + level, 30, false, 40, "violet");
         drawText("Score: " + score, 30, false, 70, "violet");
+
+        for(let i = 0; i < player.spells.length; i++) {
+            let spellText = i + 1 + ") " + (player.spells[i] || "");
+            drawText(spellText, 20, false, 110 + i * 40, "aqua");
+        }
     }
 }
 
@@ -85,7 +90,8 @@ function tick() {
 //Function die den Title zeigt
 function showTitle() {
     //Resets the game size
-    numTiles = 9;
+    numTilesWidth = 9;
+    numTilesHeight = 9;
     setupCanvas();
 
     ctx.fillSytle = 'rgba(0, 0, 0, 0.75)';
@@ -103,6 +109,7 @@ function showTitle() {
 function startGame() {
     level = 1;
     score = 0;
+    numSpells = 1;
     startLevel(startingHp);
 
     gameState = "running";
@@ -205,5 +212,7 @@ function screenshake() {
 }
 
 function increaseLevel() {
-    
+    level++;
+    numTilesWidth++;
+    numTilesHeight++;
 }

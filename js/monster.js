@@ -4,7 +4,7 @@ class Monster{
         this.move(tile);
         this.sprite = sprite;
         this.hp = hp;
-        this.teleportCounter = 2;
+        this.teleportCounter = (level === 1) ? 2 : 3;
         this.offsetX = 0;
         this.offsetY = 0;
     }

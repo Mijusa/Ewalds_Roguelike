@@ -96,15 +96,10 @@ class Exit extends Tile {
                     
                 showTitle();
             }else {
-                level++;
-
-                //Nach einem Levelanstieg wird das Spielfeld vergrößert
-                numTiles++;
+                increaseLevel();
                 
                 setupCanvas();
                 startLevel(Math.min(maxHp, player.hp + 1));
-                
-                monster.teleportCounter = 3;
             }
         }
     }
