@@ -44,8 +44,12 @@ function windowWidth() {
 }
 
 function checkForNewSpell() {
-    if(score % 5 == 0 && numSpells < 9) {
+    if(score % 7 == 0 && numSpells < 9) {
         numSpells++;
         player.addSpell();
     }
+}
+
+function checkTileForPlayer(tile) {
+    tile.x == player.tile.x && tile.y == player.tile.y;
 }

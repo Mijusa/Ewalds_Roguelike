@@ -9,15 +9,12 @@ function generateLevel(){
     for(let i = 0; i < 3; i++) {
         tile = randomPassableTile();
 
-        while(tile.monster || tile === Player.tile) {
+        while(tile.monster) {
             tile = randomPassableTile();
+            console.log("ich war hier");
         }
-
-        if(tile !== Player.tile) {
-            tile.treasure = true;
-        }else {
-            i--;
-        }
+        
+        tile.treasure = true;
     }
 }
 
@@ -63,7 +60,7 @@ function randomPassableTile() {
         let x = randomRange(0, numTilesWidth - 1);
         let y = randomRange(0, numTilesHeight - 1);
         tile = getTile(x, y);
-        return tile.passable && !tile.monster;
+        return tile.passable && !tile.monster && !tile.player && !tile.treasure;
     });
     return tile;
 }
