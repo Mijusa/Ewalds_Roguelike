@@ -100,6 +100,8 @@ class Monster{
         this.sprite = 1;
 
         score++;
+
+        checkForNewSpell();
     }
 
     move(tile){

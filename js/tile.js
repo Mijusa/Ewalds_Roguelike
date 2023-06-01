@@ -74,6 +74,8 @@ class Floor extends Tile {
             this.treasure = false;
             score++;
             spawnMonster();
+
+            checkForNewSpell();
         }
     }
 }
@@ -97,7 +99,7 @@ class Exit extends Tile {
                 showTitle();
             }else {
                 increaseLevel();
-                
+
                 setupCanvas();
                 startLevel(Math.min(maxHp, player.hp + 1));
             }

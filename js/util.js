@@ -42,3 +42,10 @@ function windowHeight() {
 function windowWidth() {
     return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 }
+
+function checkForNewSpell() {
+    if(score % 5 == 0 && numSpells < 9) {
+        numSpells++;
+        player.addSpell();
+    }
+}
