@@ -11,7 +11,7 @@ spells = {
     },
 
     //Erdebeben für jede wand an der ein monster sthet bekommt es 2 schaden
-    Erdbeben : function() {
+    EARTHQUAKE : function() {
         for(let i = 0; i < numTilesWidth; i++) {
             for(let j = 0; j < numTilesHeight; j++) {
                 let tile = getTile(i,j);
@@ -27,11 +27,11 @@ spells = {
 
     //Heal für den Spieler
     HEAL : function() {
-        Math.random() < 0.2 ? player.hp += 2: player.hp++;
+        Math.min(Math.random() < 0.2 ? player.hp += 2: player.hp++, maxHp);
     },
 
     //Reset Level
-    RRESET : function() {
+    RESET : function() {
         startLevel(Math.min(maxHp, player.hp + 1));
     },
 
@@ -49,5 +49,4 @@ spells = {
             }
         }
     },
-
 }

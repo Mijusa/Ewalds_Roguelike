@@ -44,12 +44,23 @@ function windowWidth() {
 }
 
 function checkForNewSpell() {
-    if(score % 7 == 0 && numSpells < 9) {
-        numSpells++;
-        player.addSpell();
+    if(score % 10 == 0 && numSpells < level + 1) {
+        increaseSpell();
     }
 }
 
-function checkTileForPlayer(tile) {
-    tile.x == player.tile.x && tile.y == player.tile.y;
+function increaseSpell() {
+    numSpells++;
+    player.addSpell();
 }
+
+/*
+score / 10 wenn modulo 0 neuen sell außer wenn das level zu niedrig ist
+
+bei level up neuer check ob es ein neues spell gibt
+
+also muss level mit score modulo 10 verglichen werden
+
+also wenn level + 2 > score / 10 dann numSpells++ und player.addSpell() 
+
+*/
