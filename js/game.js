@@ -215,15 +215,10 @@ function increaseLevel() {
     level++;
     numTilesWidth++;
     numTilesHeight++;
-
-    console.log(numSpells < level + 1);
-    console.log(score > level * 10);
     
     if(numSpells < level + 1 && score > level * 10) {
         increaseSpell();
     }
-
-    console.log(Object.keys(spells).length <= level + 1 && score > level * 10);
 
     if(Object.keys(spells).length <= level + 1) {
         player.addSpell();
