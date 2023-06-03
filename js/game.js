@@ -216,11 +216,11 @@ function increaseLevel() {
     numTilesWidth++;
     numTilesHeight++;
     
-    if(numSpells < level + 1 && score > level * 10) {
+    if(numSpells < level + 2 && score > level * 10) {
         increaseSpell();
     }
 
-    if(Object.keys(spells).length <= level + 1) {
+    if(player.spells <= level + 2 || player.spells.length < 9) {
         player.addSpell();
     }
 }
