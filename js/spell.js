@@ -1,6 +1,3 @@
-//TODO Spells 
-//TODO 
-
 spells = {
     WOOP : function() {
         player.move(randomPassableTile())
@@ -22,7 +19,7 @@ spells = {
             }
         }
 
-        shakeAmnount = 10;
+        shakeAmount = 20;
     },
 
     //Dash läuft in die richtung in die der spieler schaut
@@ -79,7 +76,7 @@ spells = {
         startLevel(Math.min(maxHp, player.hp + 1));
     },
 
-    RESPAWN: function(){
+    RESPAWN : function() {
         for(let i=0;i<monsters.length;i++){
             monsters[i].move(randomPassableTile());
             monsters[i].teleportCounter = 2;
