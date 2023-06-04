@@ -36,9 +36,9 @@ spells = {
             }
         }
 
-        if(tile != player.tile) {
+        if(player.tile != tile) {
             player.move(tile);
-            tile.getAdjacentPassableNeighbors().forEach(t => {
+            tile.getAdjacentNeighbors().forEach(t => {
                 if(t.monster) {
                     t.monster.hit(1);
                     t.monster.stunned = true;
@@ -107,7 +107,7 @@ spells = {
         for(let i = 0; i < numTilesWidth; i++) {
             for(let j = numTilesHeight; j > numTilesHeight / 2; j--) {
                 let tile = getTile(i,j);
-                
+
                 if(tile.monster) {
                     tile.monster.hit(2);
                 }
