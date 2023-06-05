@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Roguelike</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
         <style>
             canvas{
                 outline: 1px solid white;
@@ -30,6 +31,11 @@
             numTilesHeight = 7;
             uiWidth = 4;
             maxHp = 6;
+            startingHp = 3;
+            numLevels = 6;
+            shakeAmount = 0;
+            shakeX = 0;
+            shakeY = 0;
 
             //Level Variable
             level = 1;
@@ -37,21 +43,12 @@
             //Laden des Spritesheets
             spritesheet = new Image();
             spritesheet.src = "images/sprites.png"
-
             spritesheet.onload = showTitle;
 
             gameState = "loading";
 
-            startingHp = 3;
-            numLevels = 6;
-
-            shakeAmount = 0;
-            shakeX = 0;
-            shakeY = 0;
-
             //Movement
             document.querySelector("html").onkeydown = function(e){
-
                 if(gameState == "title") {
                     startGame();
                 }else if(gameState == "dead") {
