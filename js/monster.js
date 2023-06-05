@@ -4,6 +4,7 @@ class Monster{
         this.move(tile);
         this.sprite = sprite;
         this.hp = hp;
+        this.dmg = 1;
         this.teleportCounter = (level === 1) ? 2 : 3;
         this.offsetX = 0;
         this.offsetY = 0;
@@ -77,7 +78,7 @@ class Monster{
                 if(this.isPlayer != newTile.monster.isPlayer){
                     this.attackedThisTurn = true;
                     newTile.monster.stunned = true;
-                    newTile.monster.hit(1);
+                    newTile.monster.hit(dmg);
 
                     shakeAmount = 5;
 
@@ -152,7 +153,7 @@ class Player extends Monster {
 }
 
 //Neue Klasse für die Monster Schildkröte
-class turtle extends Monster {
+class Turtle extends Monster {
     constructor(tile) {
         super(tile, 5, 3);
     }
@@ -167,22 +168,22 @@ class turtle extends Monster {
 }
 
 //Neue Klasse für die Monster Huhn
-class chicken extends Monster {
+class Chicken extends Monster {
     constructor(tile) {
         super(tile, 6, 1);
     }
 }
 
 //Neue Klasse für die Monster Schnecke
-class snail extends Monster {
+class Snail extends Monster {
     constructor(tile) {
         super(tile, 4, 2);
     }
 }
 
-class snake extends Monster {
+class Snake extends Monster {
     constructor(tile) {
-        super(tile, 8, 1);
+        super(tile, 22, 1);
     }
 
     doStuff() {
@@ -201,4 +202,17 @@ class snake extends Monster {
     }
 }
 
-//Mehr Movement für monster einbauen
+class Farmer extends Monster {
+    constructor(tile) {
+        super(tile, 9, 2);
+        this.dmg = Math.sqrt(kills);
+    }
+}
+
+class Shroom extends Monster {
+    constructor(tile) {
+        super(tile, 10, 2);
+    }
+
+    
+}

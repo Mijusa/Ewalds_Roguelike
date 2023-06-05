@@ -76,7 +76,7 @@ function generateMonsters() {
 
 //Function die Monster spwanen lässt
 function spawnMonster() {
-    let monsterType = shuffle([turtle, chicken, snail])[0];
+    let monsterType = shuffle([Turtle, Chicken, Snail, Snake])[0];
     let monster = new  monsterType(randomPassableTile());
     monsters.push(monster);
 }

@@ -99,8 +99,8 @@ function showTitle() {
 
     gameState = "title";
 
-    drawText("Dungeon Crawler", 40, canvas.height / 2 - 110, "white");
-    drawText("Press any key to start", 60, true, canvas.height / 2 - 50, "white");
+    drawText("Ewalds Roguelike", 50, true, 100, "lightgreen");
+    drawText("Press any key to start", 60, true, 200, "lightblue");
 
     drawScores();
 }
@@ -215,6 +215,7 @@ function increaseLevel() {
     level++;
     numTilesWidth++;
     numTilesHeight++;
+    kills = 0;
     
     if(numSpells < level + 3 && score > level * 10) {
         increaseSpell();
