@@ -63,10 +63,7 @@ spells = {
         let direction = player.lastMove;
 
         if(direction[0] == 0) {
-            if(direction[1] == -1)
-                travel(direction, 2, 19); 
-            if(direction[1] == 1)
-                travel(direction, 2, 13);  
+            (direction[1] == -1) ? travel(direction, 2, 19) : travel(direction, 2, 13);
         }else if(direction[0] == 1) {
             travel(direction, 2, 18); 
         }else {
