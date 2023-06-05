@@ -1,4 +1,5 @@
 spells = {
+    //random Teleport für den Spieler
     WOOP : function() {
         player.move(randomPassableTile())
     },
@@ -60,24 +61,16 @@ spells = {
     //Feuerball für jedes monster das in laufrichtung des spielers steht bekommt es 2 schaden
     FIREBALL : function() {
         let direction = player.lastMove;
-        let tile = player.tile;
-        
-        while(true) {
-            let nextTile = tile.getNeighbor(direction[0], direction[1]);
-            if(nextTile.passable) {
-                tile = nextTile;
-                if(tile.monster) {
-                    tile.monster.hit(2);
-                }
 
-                if(direction[0] == 0) {
-                    tile.setEffect(13);
-                }else {
-                    tile.setEffect(17);
-                }
-            }else {
-                break;
-            }
+        if(direction[0] == 0) {
+            if(direction[1] == -1)
+                travel(direction, 2, 19); 
+            if(direction[1] == 1)
+                travel(direction, 2, 13);  
+        }else if(direction[0] == 1) {
+            travel(direction, 2, 18); 
+        }else {
+            travel(direction, 2, 17)
         }
     },
 
@@ -85,6 +78,13 @@ spells = {
     //Heal für den Spieler
     HEAL : function() {
         Math.min(Math.random() < 0.2 ? player.hp += 2: player.hp++, maxHp); 
+
+        let tiles = player.tile.getAdjacentNeighbors();
+        for (let i = 0; i < tiles.length; i++) {
+            tiles[i].setEffect(21);
+        }
+
+        player.tile.setEffect(21); 
     },
 
     //Reset Level
@@ -117,7 +117,7 @@ spells = {
         let directions = [[1,1], [1,-1], [-1,1], [-1,-1]];
 
         for(let i = 0; i < directions.length; i++) {
-            travel(directions[i], 2, 18);
+            travel(directions[i], 2, 20);
         }
     },
 
