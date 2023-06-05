@@ -41,9 +41,19 @@ spells = {
             tile.getAdjacentNeighbors().forEach(t => {
                 if(t.monster) {
                     t.monster.hit(1);
-                    t.monster.stunned = true;
+                    if(t.monster) {
+                        t.monster.stunned = true;
+                    }
                 }
             });
+        }
+
+        let tiles = player.tile.getAdjacentPassableNeighbors();
+        for(let i = 0; i < tiles.length; i++) {
+            let tile = tiles[i];
+            if(tile.monster) {
+                tile.monster.stunned = true;
+            }
         }
     },
 
@@ -59,6 +69,12 @@ spells = {
                 if(tile.monster) {
                     tile.monster.hit(2);
                 }
+
+                if(direction[0] == 0) {
+                    tile.setEffect(13);
+                }else {
+                    tile.setEffect(17);
+                }
             }else {
                 break;
             }
@@ -68,7 +84,7 @@ spells = {
 
     //Heal für den Spieler
     HEAL : function() {
-        Math.random() < 0.2 ? player.hp += 2: player.hp++;
+        Math.min(Math.random() < 0.2 ? player.hp += 2: player.hp++, maxHp); 
     },
 
     //Reset Level
@@ -88,7 +104,11 @@ spells = {
         let directions = [[0,1], [0,-1], [1,0], [-1,0]];
 
         for(let i = 0; i < directions.length; i++) {
-            travel(directions[i], 2);
+            if(directions[i][0] == 0) {
+                travel(directions[i], 2, 11);
+            }else {
+                travel(directions[i], 2, 12);
+            }
         }
     },
 
@@ -97,7 +117,7 @@ spells = {
         let directions = [[1,1], [1,-1], [-1,1], [-1,-1]];
 
         for(let i = 0; i < directions.length; i++) {
-            travel(directions[i], 2);
+            travel(directions[i], 2, 18);
         }
     },
 
@@ -105,8 +125,12 @@ spells = {
     //Tsunami für jedes monster das auf der Unteren hälfte der map steht bekommt es 1 schaden
     TSUNAMI : function() {
         for(let i = 0; i < numTilesWidth; i++) {
-            for(let j = numTilesHeight; j > numTilesHeight / 2; j--) {
+            for(let j = numTilesHeight; j > (numTilesHeight - 1) / 2; j--) {
                 let tile = getTile(i,j);
+
+                if(tile.passable) {
+                    tile.setEffect(16);
+                }
 
                 if(tile.monster) {
                     tile.monster.hit(2);
@@ -122,6 +146,10 @@ spells = {
         for(let i = 0; i < tiles.length; i++) {
             let tile = tiles[i];
 
+            if(tile.passable) {
+                tile.setEffect(15);
+            }
+
             if(tile.monster) {
                 tile.monster.hit(1);
             }
@@ -133,6 +161,10 @@ spells = {
         for(let i = 0; i < numTilesWidth; i++) {
             for(let j = 0; j < numTilesHeight / 2; j++) {
                 let tile = getTile(i,j);
+
+                if(tile.passable) {
+                    tile.setEffect(14);
+                }
                 
                 if(tile.monster) {
                     tile.monster.hit(2);
@@ -142,7 +174,7 @@ spells = {
     }
 }
 
-function travel(direction, damage) {
+function travel(direction, damage, effect) {
     let tile = player.tile;
     while(true) {
         let nextTile = tile.getNeighbor(direction[0], direction[1]);
@@ -153,6 +185,8 @@ function travel(direction, damage) {
             if(tile.monster) {
                 tile.monster.hit(damage);
             }
+
+            tile.setEffect(effect);
         }else {
             break;
         }
