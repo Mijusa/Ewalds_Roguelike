@@ -78,7 +78,7 @@ class Monster{
                 if(this.isPlayer != newTile.monster.isPlayer){
                     this.attackedThisTurn = true;
                     newTile.monster.stunned = true;
-                    newTile.monster.hit(dmg);
+                    newTile.monster.hit(this.dmg);
 
                     shakeAmount = 5;
 
@@ -103,6 +103,7 @@ class Monster{
         this.sprite = 1;
 
         score++;
+        kills++;
 
         checkForNewSpell();
     }
@@ -204,15 +205,13 @@ class Snake extends Monster {
 
 class Farmer extends Monster {
     constructor(tile) {
-        super(tile, 9, 2);
+        super(tile, 23, 2);
         this.dmg = Math.sqrt(kills);
     }
 }
 
 class Shroom extends Monster {
     constructor(tile) {
-        super(tile, 10, 2);
+        super(tile, 24, 3);
     }
-
-    
 }
