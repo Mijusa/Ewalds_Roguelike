@@ -187,20 +187,14 @@ class Snake extends Monster {
         super(tile, 22, 1);
     }
 
-    doStuff() {
-        this.attackedThisTurn = false;
-        super.doStuff();
+    doStuff(){
+		this.attackedThisTurn = false;
+		super.doStuff();
 
-        if(!this.attackedThisTurn) {
-            let neighbors = this.tile.getAdjacentPassableNeighbors();
-
-            neighbors = neighbors.filter(t => t.monster && t.monster.isPlayer);
-
-            if(neighbors.length) {
-                this.doStuff();
-            }
-        }
-    }
+		if(!this.attackedThisTurn){
+			super.doStuff();
+		}
+	}
 }
 
 class Farmer extends Monster {
