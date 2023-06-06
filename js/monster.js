@@ -206,7 +206,7 @@ class Snake extends Monster {
 class Farmer extends Monster {
     constructor(tile) {
         super(tile, 23, 2);
-        this.dmg = Math.sqrt(kills);
+        this.dmg = Math.round(Math.sqrt(Math.round(Math.sqrt(kills))));
     }
 }
 
