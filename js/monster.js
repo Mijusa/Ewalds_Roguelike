@@ -214,4 +214,10 @@ class Shroom extends Monster {
     constructor(tile) {
         super(tile, 24, 3);
     }
+
+    doStuff() {
+        super.doStuff();
+
+        this.tile.activateSpores()
+    }
 }

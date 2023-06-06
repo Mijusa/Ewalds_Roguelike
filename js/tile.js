@@ -70,15 +70,16 @@ class Tile {
         }
     }
 
-    setEffect(effectSprite) {
+    setEffect(effectSprite, effectCounter) {
         this.effect = effectSprite;
-        this.effectCounter = 60;
+        this.effectCounter = effectCounter;
     }
 }
 
 class Floor extends Tile {
     constructor(x, y) {
         super(x, y, 2 , true);
+        this.spores = false;
     }
 
     stepOn(monster) {
@@ -89,6 +90,22 @@ class Floor extends Tile {
 
             checkForNewSpell();
         }
+
+        if(monster.isPlayer && this.spores == true) {
+            monster.hit(1);
+        }
+
+        if(monster.isShroom) {
+            activateSpores();
+        }
+    }
+
+    activateSpores() {
+        this.setEffect(11);
+    }
+
+    while(spores) {
+        this.setEffect(11);
     }
 }
 

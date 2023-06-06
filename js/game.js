@@ -85,6 +85,8 @@ function tick() {
         spawnCounter = spawnRate;
         spawnRate--;
     }
+
+    tiles.spores--;
 }
 
 //Function die den Title zeigt
