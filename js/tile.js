@@ -79,7 +79,6 @@ class Tile {
 class Floor extends Tile {
     constructor(x, y) {
         super(x, y, 2 , true);
-        this.spores = false;
     }
 
     stepOn(monster) {
@@ -90,22 +89,6 @@ class Floor extends Tile {
 
             checkForNewSpell();
         }
-
-        if(monster.isPlayer && this.spores == true) {
-            monster.hit(1);
-        }
-
-        if(monster.isShroom) {
-            activateSpores();
-        }
-    }
-
-    activateSpores() {
-        this.setEffect(11);
-    }
-
-    while(spores) {
-        this.setEffect(11);
     }
 }
 
@@ -135,3 +118,10 @@ class Exit extends Tile {
         }
     }
 }
+
+/*class SporeTile extends Floor {
+    constructor(x, y) {
+        super(x, y, 25, true);
+        this.spores = 3;
+    }
+}*/
