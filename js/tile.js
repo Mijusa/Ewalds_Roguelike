@@ -118,3 +118,25 @@ class Exit extends Tile {
         }
     }
 }
+
+class SporeFloor extends Tile {
+    constructor(x, y) {
+        super(x, y, 21 , true);
+        this.spores = 3;
+    }
+
+    stepOn(monster) {
+        if(monster.isPlayer && this.treasure) {
+            this.treasure = false;
+            score++;
+            spawnMonster();
+
+            checkForNewSpell();
+        }
+
+        if(monster) {
+            monster.stunned = true;
+            monster.hit(1);
+        }
+    }
+}

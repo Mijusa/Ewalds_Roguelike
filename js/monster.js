@@ -208,4 +208,15 @@ class Shroom extends Monster {
     constructor(tile) {
         super(tile, 24, 3);
     }
+    doStuff(){
+        let tile = this.tile;
+
+        if(Math.random() < 0.5 && !tile.Exit){
+            tile.replace(SporeFloor);
+            this.move(tile);
+            console.log("Floor placed");
+        }else {
+            super.doStuff();
+        }
+    }
 }
