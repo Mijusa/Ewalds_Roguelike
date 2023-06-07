@@ -70,9 +70,9 @@ class Tile {
         }
     }
 
-    setEffect(effectSprite, effectCounter) {
+    setEffect(effectSprite) {
         this.effect = effectSprite;
-        this.effectCounter = effectCounter;
+        this.effectCounter = 30;
     }
 }
 
