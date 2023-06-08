@@ -210,6 +210,7 @@ class Shroom extends Monster {
     constructor(tile) {
         super(tile, 24, 3);
     }
+  
     doStuff(){
         let tiles = this.tile.getAdjacentPassableNeighbors().filter(t => !t.monster && inBounds(t.x, t.y));
 
@@ -224,3 +225,4 @@ class Shroom extends Monster {
         }
     }
 }
+

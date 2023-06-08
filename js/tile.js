@@ -73,7 +73,7 @@ class Tile {
 
     setEffect(effectSprite) {
         this.effect = effectSprite;
-        this.effectCounter = 60;
+        this.effectCounter = 30;
     }
 }
 
