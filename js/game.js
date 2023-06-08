@@ -86,18 +86,17 @@ function tick() {
         spawnRate--;
     }
 
-    /*for(let i = 0; i < numTilesWidth; i++) {
+    for(let i = 0; i < numTilesWidth; i++) {
         for(let j = 0; j < numTilesHeight; j++) {
             let tile = getTile(i, j);
-            if(tile == SporeTile) {
-                if(tile.spores > 0) {
-                    tile.spores--;
-                }else {
-                    tile.replace(FloorTile);
-                }
+
+            if(tile.spores > 0) {
+                tile.spores--;
+            }else if(tile.spores == 0 && tile.sprite == 21) {
+                tile.replace(Floor);
             }
         }
-    }*/
+    }
 }
 
 //Function die den Title zeigt
