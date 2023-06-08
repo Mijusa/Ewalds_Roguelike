@@ -188,10 +188,12 @@ class Snake extends Monster {
     }
 
     doStuff(){
+        this.dmg = 1;
 		this.attackedThisTurn = false;
 		super.doStuff();
 
 		if(!this.attackedThisTurn){
+            this.dmg = 0;
 			super.doStuff();
 		}
 	}
@@ -209,14 +211,16 @@ class Shroom extends Monster {
         super(tile, 24, 3);
     }
     doStuff(){
-        let tile = this.tile;
+        let tiles = this.tile.getAdjacentPassableNeighbors().filter(t => !t.monster && inBounds(t.x, t.y));
 
-        if(Math.random() < 0.5 && !tile.Exit){
-            tile.replace(SporeFloor);
-            this.move(tile);
+        if(Math.random() < 0.3 && !tile.Exit && tiles.length){
+            tiles[0].replace(SporeFloor);
             console.log("Floor placed");
         }else {
             super.doStuff();
+            if(tile.SporeFloor) {
+                this.heal(1);
+            }
         }
     }
 }

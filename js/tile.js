@@ -5,6 +5,7 @@ class Tile {
         this.y = y;
         this.sprite = sprite;
         this.passable = passable;
+        this.spores = 0;
     }
 
     replace(newTileType){
@@ -122,7 +123,7 @@ class Exit extends Tile {
 class SporeFloor extends Tile {
     constructor(x, y) {
         super(x, y, 21 , true);
-        this.spores = 3;
+        this.spores = 10;
     }
 
     stepOn(monster) {
@@ -132,11 +133,9 @@ class SporeFloor extends Tile {
             spawnMonster();
 
             checkForNewSpell();
-        }
 
-        if(monster) {
-            monster.stunned = true;
             monster.hit(1);
+            
         }
     }
 }
