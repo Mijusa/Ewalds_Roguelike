@@ -122,7 +122,7 @@ class Exit extends Tile {
 
 class SporeFloor extends Tile {
     constructor(x, y) {
-        super(x, y, 21 , true);
+        super(x, y, 25, true);
         this.spores = 10;
     }
 
