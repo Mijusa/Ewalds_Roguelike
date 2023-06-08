@@ -216,7 +216,6 @@ class Shroom extends Monster {
 
         if(Math.random() < 0.3 && !tile.Exit && tiles.length){
             tiles[0].replace(SporeFloor);
-            console.log("Floor placed");
         }else {
             super.doStuff();
             if(tile.SporeFloor) {

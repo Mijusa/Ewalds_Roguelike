@@ -94,7 +94,6 @@ function tick() {
                 tile.spores--;
             }else if(tile.spores == 0 && tile.sprite == 25) {
                 tile.replace(Floor);
-                console.log("Spore has decreased");
             }
         }
     }
