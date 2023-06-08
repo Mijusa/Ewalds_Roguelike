@@ -133,9 +133,8 @@ class SporeFloor extends Tile {
             spawnMonster();
 
             checkForNewSpell();
-
-            monster.hit(1);
-            
         }
+        
+        monster.hit(1);
     }
 }
