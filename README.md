@@ -10,7 +10,8 @@ Ewalds Rouguelike
 
 or
 
-2. Visit the website: Ewald-Entertainment [Ewald-Entertainment](http://ewald-entertainment.de:2000) and play without downloading it
+2. 
+* Visit the website: Ewald-Entertainment [Ewald-Entertainment](http://ewald-entertainment.de:2000) and play without downloading it
 
 # How to play the Game
 The movement works with wasd or the arrow keys.
