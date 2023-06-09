@@ -4,6 +4,7 @@ Ewalds Rouguelike
 
 # How to run the Game
 1. 
+
     * Download the Repository with: git clone https://github.com/Mijusa/Ewalds_Roguelike.git
     * Open the Index.html in your Browser.
 
