@@ -56,10 +56,11 @@ function draw() {
 
         drawText("Level: " + level, 30, false, 40, "violet");
         drawText("Score: " + score, 30, false, 70, "violet");
+        drawText("Mute Sounds with m", 20, false, 110, "violet");
 
         for(let i = 0; i < player.spells.length; i++) {
             let spellText = i + 1 + ") " + (player.spells[i] || "");
-            drawText(spellText, 20, false, 110 + i * 40, "aqua");
+            drawText(spellText, 20, false, 150 + i * 40, "aqua");
         }
     }
 }
