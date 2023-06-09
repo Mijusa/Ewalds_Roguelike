@@ -99,8 +99,16 @@ class Monster{
 
     die(){
         this.dead = true;
-        this.tile.monster = null;
-        this.sprite = 1;
+        let tile = this.tile;
+        tile.monster = null;
+
+        if(this.isPlayer){
+            this.sprite = 1;
+        }else{
+            this.sprite = 26;
+            
+            //tile.replace(tile.spores > 0 ? SporeFloor : Floor);
+        }
 
         score++;
         kills++;
