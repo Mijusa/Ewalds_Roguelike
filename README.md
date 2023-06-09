@@ -32,5 +32,8 @@ All sprites where drawn by  myself in 16 x 16 bit on the App [Pixaki](https://pi
 ## Music
 The Music is from [pixaby][https://pixabay.com/]. I only chose free to use and royalty free SFX and edited them a bit with [Audacity](https://www.audacity.de/).
 
+## AI
+Some of the code was written with the help of ChatGPT or Github Copilot, because im new to JavaScript.
+
 # License
 This game runs under the MIT License, for more Information see the LICENSE File.
