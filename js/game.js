@@ -237,3 +237,19 @@ function increaseLevel() {
         player.addSpell();
     }
 }
+
+function initSounds() {
+    sounds = {
+        hit1: new Audio('sounds/hit1.mp3'),
+        hit2: new Audio('sounds/hit2.mp3'),
+        spell: new Audio('sounds/spells.mp3'),
+        treasure: new Audio('sounds/treasure.mp3'),
+    }
+}
+
+function playSound(soundName) {
+    if(!mute) {
+        sounds[soundName].currentTime = 0;
+        sounds[soundName].play();
+    }
+}

@@ -95,6 +95,8 @@ class Monster{
         if(this.hp <= 0){
             this.die();
         }
+
+        this.isPlayer ? playSound("hit2") : playSound("hit1");
     }
 
     die(){
@@ -226,7 +228,7 @@ class Shroom extends Monster {
             tiles[0].replace(SporeFloor);
         }else {
             super.doStuff();
-            if(tile.SporeFloor) {
+            if(tile.spore > 0) {
                 this.heal(1);
             }
         }

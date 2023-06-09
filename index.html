@@ -37,6 +37,7 @@
             shakeX = 0;
             shakeY = 0;
             kills = 0;
+            mute = false;
 
             //Level Variable
             level = 1;
@@ -50,7 +51,9 @@
 
             //Movement
             document.querySelector("html").onkeydown = function(e){
-                if(gameState == "title") {
+                if(e.key=="m") {
+                    toggleSound();
+                }else if(gameState == "title") {
                     startGame();
                 }else if(gameState == "dead") {
                     showTitle();
@@ -82,6 +85,8 @@
             setInterval(draw, 15);
 
             setupCanvas();
+
+            initSounds();
         </script>
     </head>
     <body>
