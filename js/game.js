@@ -56,7 +56,8 @@ function draw() {
 
         drawText("Level: " + level, 30, false, 40, "violet");
         drawText("Score: " + score, 30, false, 70, "violet");
-        drawText("Mute Sounds with m", 20, false, 110, "violet");
+        
+        mute ? drawText("Unmute Sounds with m", 20, false, 110, "violet"): drawText("Mute Sounds with m", 20, false, 110, "violet");
 
         for(let i = 0; i < player.spells.length; i++) {
             let spellText = i + 1 + ") " + (player.spells[i] || "");
@@ -97,6 +98,23 @@ function tick() {
                 tile.replace(Floor);
             }
         }
+    }
+
+    let exit = false;
+    //check if exit exists
+    for(let i = 0; i < numTilesWidth; i++) {
+        for(let j = 0; j < numTilesHeight; j++) {
+            let tile = getTile(i, j);
+            
+            if(tile instanceof Exit) {
+                exit = true;
+            }
+            
+        }
+    }
+
+    if(!exit) {
+        randomPassableTile().replace(Exit);
     }
 }
 

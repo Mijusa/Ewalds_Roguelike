@@ -224,11 +224,12 @@ class Shroom extends Monster {
     doStuff(){
         let tiles = this.tile.getAdjacentPassableNeighbors().filter(t => !t.monster && inBounds(t.x, t.y));
 
-        if(Math.random() < 0.3 && !tile.Exit && tiles.length){
+        if(Math.random() < 0.3 && !(tile instanceof Exit) && tiles.length > 0){
             tiles[0].replace(SporeFloor);
+            console.log("SporeFloor");
         }else {
             super.doStuff();
-            if(tile.spore > 0) {
+            if(tile instanceof SporeFloor) {
                 this.heal(1);
             }
         }

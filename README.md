@@ -4,14 +4,13 @@ Ewalds Rouguelike
 
 # How to run the Game
 1. 
-
-* Download the Repository with: git clone https://github.com/Mijusa/Ewalds_Roguelike.git
-* Open the Index.html in your Browser.
+Download the Repository with: git clone https://github.com/Mijusa/Ewalds_Roguelike.git
+Open the Index.html in your Browser.
 
 or
 
 2. 
-* Visit the website: Ewald-Entertainment [Ewald-Entertainment](http://ewald-entertainment.de:2000) and play without downloading it
+Visit the website: Ewald-Entertainment [Ewald-Entertainment](https://ewald-entertainment.de) and play without downloading it
 
 # How to play the Game
 The movement works with wasd or the arrow keys.
@@ -30,7 +29,7 @@ The base game is from the tutorial [JavaScript Broughlike Tutorial](https://nluq
 All sprites where drawn by  myself in 16 x 16 bit on the App [Pixaki](https://pixaki.com/) and then addited together with [GIMP](https://www.gimp.org/).
 
 ## Music
-The Music is from [pixaby][https://pixabay.com/]. I only chose free to use and royalty free SFX and edited them a bit with [Audacity](https://www.audacity.de/).
+The Music is from [pixaby](https://pixabay.com/). I only chose free to use and royalty free SFX and edited them a bit with [Audacity](https://www.audacity.de/).
 
 ## AI
 Some of the code was written with the help of ChatGPT or Github Copilot, because im new to JavaScript.
