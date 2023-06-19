@@ -57,7 +57,7 @@ function draw() {
         drawText("Level: " + level, 30, false, 40, "violet");
         drawText("Score: " + score, 30, false, 70, "violet");
         
-        mute ? drawText("Unmute Sounds with m", 20, false, 110, "violet"): drawText("Mute Sounds with m", 20, false, 110, "violet");
+        mute ? drawText("Unmute Sounds with s", 20, false, 110, "violet"): drawText("Mute Sounds with s", 20, false, 110, "violet");
 
         for(let i = 0; i < player.spells.length; i++) {
             let spellText = i + 1 + ") " + (player.spells[i] || "");
