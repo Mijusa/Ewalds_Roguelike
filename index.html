@@ -51,9 +51,7 @@
 
             //Movement
             document.querySelector("html").onkeydown = function(e){
-                if(e.key=="s") {
-                    toggleSound();
-                }else if(gameState == "title") {
+                if(gameState == "title") {
                     startGame();
                 }else if(gameState == "dead") {
                     showTitle();
@@ -70,7 +68,18 @@
 
                     //Spells
                     if(e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1);
+
+                    //End the run
+                    if(e.key=="Escape") {
+                        showTitle();
+                    }
                 }
+
+                //Mute the sounds
+                if(e.key=="s") {
+                    toggleSound();
+                }
+
             };
 
             //requestAnimationFrame 
