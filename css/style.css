@@ -6,3 +6,23 @@ video {
     display: block;
     margin: auto;
 }
+
+p {
+    text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+
+image {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
