@@ -127,7 +127,7 @@ class SporeFloor extends Tile {
     }
 
     stepOn(monster) {
-        if(monster.isPlayer && this.treasure) {
+        if(monster.isPlayer && this.treasure && !monster.isShroom) {
             this.treasure = false;
             score++;
             spawnMonster();

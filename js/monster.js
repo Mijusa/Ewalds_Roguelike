@@ -219,6 +219,7 @@ class Farmer extends Monster {
 class Shroom extends Monster {
     constructor(tile) {
         super(tile, 24, 3);
+        this.isShroom = true;
     }
   
     doStuff(){

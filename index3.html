@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Roguelike</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
+        <style>
+            canvas{
+                outline: 1px solid white;
+            }
+
+            body {
+                background: rgb(70, 68, 75);
+                text-align: center;
+                margin-top: 5px;
+            }
+        </style>
+
+        <canvas></canvas>
+
+        <script src="js/game.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/monster.js"></script>
+        <script src="js/spell.js"></script>
+        <script src="js/tile.js"></script>
+        <script src="js/util.js"></script>
+
+        <script>
+            //Variablen für den Canvas
+            tileSize = 64;
+            numTilesWidth = 7;
+            numTilesHeight = 7;
+            uiWidth = 4;
+            maxHp = 6;
+            startingHp = 3;
+            numLevels = 6;
+            shakeAmount = 0;
+            shakeX = 0;
+            shakeY = 0;
+            kills = 0;
+            mute = false;
+
+            //Level Variable
+            level = 1;
+
+            //Laden des Spritesheets
+            spritesheet = new Image();
+            spritesheet.src = "images/sprites.png"
+            spritesheet.onload = showTitle;
+
+            gameState = "loading";
+
+            //Movement
+            document.querySelector("html").onkeydown = function(e){
+                if(gameState == "title") {
+                    startGame();
+                }else if(gameState == "dead") {
+                    showTitle();
+                }else if(gameState == "running") {
+                    //Movement
+                    if(e.key=="w") player.tryMove(0, -1);
+                    if(e.key=="s") player.tryMove(0, 1);
+                    if(e.key=="a") player.tryMove(-1, 0);
+                    if(e.key=="d") player.tryMove(1, 0);
+                    if(e.key=="ArrowUp") player.tryMove(0, -1);
+                    if(e.key=="ArrowDown") player.tryMove(0, 1);
+                    if(e.key=="ArrowLeft") player.tryMove(-1, 0);
+                    if(e.key=="ArrowRight") player.tryMove(1, 0);
+
+                    //Spells
+                    if(e.key >= 1 && e.key <= 9) player.castSpell(e.key - 1);
+
+                    //End the run
+                    if(e.key=="Escape") {
+                        showTitle();
+                    }
+                }
+
+                //Mute the sounds
+                if(e.key=="x") {
+                    toggleSound();
+                }
+
+            };
+
+            //requestAnimationFrame 
+            /*function animate() {
+                draw();
+                requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);*/
+            
+            //Alternative zu requestAnimationFrame
+            setInterval(draw, 15);
+
+            setupCanvas();
+
+            initSounds();
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
